@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <div class="quiz-card">
+        <h1>Welcome to the Computer Quiz!</h1>
+
+        {% if results is none %}
+        <form action="/submit" method="post">
+            {% for q in questions %}
+            <div class="form-group">
+                <label for="{{ q.id }}"><strong>{{ loop.index }}. {{ q.prompt }}</strong></label>
+                <input type="text" id="{{ q.id }}" name="{{ q.id }}" placeholder="Type your answer..." required>
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn">Submit Answers</button>
+        </form>
+        {% else %}
+        <div class="results-section">
+            <h2>Results</h2>
+            <p class="score-summary">You got <strong>{{ score }}</strong> out of <strong>{{ total }}</strong> correct ({{ "%.1f"|format(percentage) }}%).</p>
+            
+            <div class="review-list">
+                {% for res in results %}
+                <div class="result-item {{ 'correct' if res.is_correct else 'incorrect' }}">
+                    <p><strong>{{ res.prompt }}</strong></p>
+                    <p>Your Answer: <em>{{ res.user_ans or 'No answer provided' }}</em></p>
+                    {% if not res.is_correct %}
+                    <p>Correct Answer: <em>{{ res.correct_ans }}</em></p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <a href="/" class="btn restart-btn">Try Again</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
