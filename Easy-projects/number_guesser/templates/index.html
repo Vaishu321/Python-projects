@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <div class="game-card">
+        <h1>Rock, Paper, Scissors</h1>
+
+        <!-- Scoreboard -->
+        <div class="scoreboard">
+            <div class="score-box">
+                <span class="score-label">You</span>
+                <span class="score-val">{{ user_wins }}</span>
+            </div>
+            <div class="score-divider">:</div>
+            <div class="score-box">
+                <span class="score-label">Computer</span>
+                <span class="score-val">{{ computer_wins }}</span>
+            </div>
+        </div>
+
+        <!-- Last Round Result Display -->
+        {% if result %}
+        <div class="result-box result-{{ result_type }}">
+            <h2>{{ result }}</h2>
+            <p>You picked <strong>{{ user_pick|capitalize }}</strong> — Computer picked <strong>{{ computer_pick|capitalize }}</strong></p>
+        </div>
+        {% endif %}
+
+        <!-- Choice Buttons -->
+        <p class="instruction">Choose your move:</p>
+        <div class="choices-container">
+            <form action="/play" method="post">
+                <input type="hidden" name="user_wins" value="{{ user_wins }}">
+                <input type="hidden" name="computer_wins" value="{{ computer_wins }}">
+                <input type="hidden" name="user_pick" value="rock">
+                <button type="submit" class="choice-btn btn-rock">🪨<br>Rock</button>
+            </form>
+
+            <form action="/play" method="post">
+                <input type="hidden" name="user_wins" value="{{ user_wins }}">
+                <input type="hidden" name="computer_wins" value="{{ computer_wins }}">
+                <input type="hidden" name="user_pick" value="paper">
+                <button type="submit" class="choice-btn btn-paper">📄<br>Paper</button>
+            </form>
+
+            <form action="/play" method="post">
+                <input type="hidden" name="user_wins" value="{{ user_wins }}">
+                <input type="hidden" name="computer_wins" value="{{ computer_wins }}">
+                <input type="hidden" name="user_pick" value="scissors">
+                <button type="submit" class="choice-btn btn-scissors">✂️<br>Scissors</button>
+            </form>
+        </div>
+
+        <!-- Reset Link -->
+        <a href="/" class="reset-link">Reset Scores / Quit</a>
+    </div>
+</body>
+</html>
