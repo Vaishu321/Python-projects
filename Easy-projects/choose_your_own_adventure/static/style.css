@@ -1,0 +1,161 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Main Container Card with Black Outlines */
+.game-card {
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 16px;
+    border: 3px solid #000000;
+    box-shadow: 8px 8px 0px #000000;
+    width: 90%;
+    max-width: 460px;
+    text-align: center;
+}
+
+h1 {
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.story-box {
+    background-color: #f8fafc;
+    border: 3px solid #000000;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: 4px 4px 0px #000000;
+}
+
+.story-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Inputs & Form Groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 14px;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 4px 4px 0px #000000;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    background-color: #f0fdf4;
+}
+
+/* Buttons Container */
+.options-container {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+}
+
+/* General Vibrant Button Style */
+.btn {
+    display: inline-block;
+    width: 100%;
+    border: 3px solid #000000;
+    border-radius: 12px;
+    padding: 14px 10px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    color: #ffffff;
+    box-shadow: 4px 4px 0px #000000;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000000;
+}
+
+.btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000000;
+}
+
+/* Vibrant Button Variants */
+.btn-start, .btn-green {
+    background-color: #16a34a;
+}
+
+.btn-blue {
+    background-color: #2563eb;
+}
+
+.btn-yellow {
+    background-color: #eab308;
+    color: #000000;
+}
+
+.btn-red {
+    background-color: #dc2626;
+}
+
+.btn-restart {
+    background-color: #000000;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+/* Outcome Banners */
+.result-box {
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 3px solid #000000;
+    box-shadow: 4px 4px 0px #000000;
+}
+
+.result-box h2 {
+    margin: 0 0 10px 0;
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.result-box p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.result-win {
+    background-color: #bbf7d0;
+    color: #14532d;
+}
+
+.result-loss {
+    background-color: #fecaca;
+    color: #7f1d1d;
+}
+
+.player-tag {
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 16px;
+}

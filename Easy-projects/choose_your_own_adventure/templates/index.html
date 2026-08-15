@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Adventure Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <div class="game-card">
+        <h1>🗺️ Text Adventure</h1>
+
+        <!-- START SCREEN -->
+        {% if step == 'start' %}
+        <p class="story-text">Begin your journey! What is your name?</p>
+        <form action="/play" method="post">
+            <input type="hidden" name="step" value="start">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Enter your name..." required autofocus>
+            </div>
+            <button type="submit" class="btn btn-start">Start Adventure</button>
+        </form>
+
+        <!-- GAME CHOICES -->
+        {% elif step in ['dirt_road', 'river', 'bridge', 'stranger'] %}
+        <div class="story-box">
+            <p class="story-text">{{ story }}</p>
+        </div>
+
+        <form action="/play" method="post" class="options-container">
+            <input type="hidden" name="step" value="{{ step }}">
+            <input type="hidden" name="name" value="{{ name }}">
+
+            {% if step == 'dirt_road' %}
+                <button type="submit" name="choice" value="left" class="btn btn-blue">⬅️ Go Left</button>
+                <button type="submit" name="choice" value="right" class="btn btn-yellow">➡️ Go Right</button>
+            {% elif step == 'river' %}
+                <button type="submit" name="choice" value="walk" class="btn btn-green">🥾 Walk Around</button>
+                <button type="submit" name="choice" value="swim" class="btn btn-red">🏊 Swim Across</button>
+            {% elif step == 'bridge' %}
+                <button type="submit" name="choice" value="cross" class="btn btn-blue">🌉 Cross Bridge</button>
+                <button type="submit" name="choice" value="back" class="btn btn-yellow">🔙 Head Back</button>
+            {% elif step == 'stranger' %}
+                <button type="submit" name="choice" value="yes" class="btn btn-green">🗣️ Talk to Them</button>
+                <button type="submit" name="choice" value="no" class="btn btn-red">🙈 Ignore Them</button>
+            {% endif %}
+        </form>
+
+        <!-- GAME OVER / WIN SCREEN -->
+        {% elif step == 'game_over' %}
+        <div class="result-box {{ 'result-win' if is_win else 'result-loss' }}">
+            <h2>{{ '🎉 YOU WON!' if is_win else '💀 GAME OVER' }}</h2>
+            <p>{{ story }}</p>
+        </div>
+        <p class="player-tag">Thank you for playing, <strong>{{ name }}</strong>!</p>
+        <a href="/" class="btn btn-restart">Play Again</a>
+        {% endif %}
+    </div>
+</body>
+</html>
