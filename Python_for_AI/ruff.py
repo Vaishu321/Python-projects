@@ -33,3 +33,17 @@ Spaces around operators (x = 1, not x=1)
 Two blank lines between functions
 Maximum line length of 88 characters
 You don’t need to memorize these - Ruff handles them for you!"""
+
+
+# Unused imports (Ruff warns you)
+import os
+import sys
+
+# Only using one
+print("Hello")
+
+
+# Hover over underlined code to see:
+# What the issue is
+# Why it matters
+# How to fix it
