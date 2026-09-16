@@ -16,3 +16,6 @@ except ZeroDivisionError:
     print("Cannot divide by zero")
 
 
+# the finally clause
+# Code in finally always runs, error or not:
+
