@@ -25,3 +25,11 @@ shopping_cart = [
     {"name": "banana", "price": 0.3, "quantity": 8},
 ]
 print(calculate_total(shopping_cart))
+
+
+"""Ruff follows Python’s style guide (PEP 8) automatically:
+4 spaces for indentation
+Spaces around operators (x = 1, not x=1)
+Two blank lines between functions
+Maximum line length of 88 characters
+You don’t need to memorize these - Ruff handles them for you!"""
