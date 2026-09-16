@@ -24,7 +24,6 @@ print(f"Temperature in Paris: {temperature}°C")
 
 # What is JSON? JSON (JavaScript Object Notation) is just a way to structure data, similar to CSV or Excel files. While CSV stores data in rows and columns, 
 # JSON uses key-value pairs like Python dictionaries
-import requests
 
 def get_weather(latitude, longitude):
     response = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,wind_speed_10m")
